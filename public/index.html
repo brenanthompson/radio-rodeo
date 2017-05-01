@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="radioRodeo">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,7 +10,7 @@
     <!-- Bootstrap -->
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <link rel="icon" type="image/x-icon" href="/public/img/favicon.ico" />
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
     <link rel="stylesheet" href="styles.css">
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -19,23 +19,23 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 </head>
-<body>
+<body ng-controller="podCtrl">
 
 <navbar>**Navbar Here**</navbar>
 <h1>Radio Rodeo!</h1>
-
 <div class="search-form">
-    <form action="/search" class="search" method="get" _lpchecked="1">
+    <form>
         <div class="row">
-            <div class="col-xs-10 col-xs-offset-1 query-wrapper"><span aria-hidden="true"
-                                                                       class="glyphicon glyphicon-search"></span><input
-                    aria-autocomplete="both" autocomplete="off" class="query suggest" name="search"
-                    placeholder="Search phrases, shows, topics, networks, or people" type="text" value="">
-                <button class="btn searchbtn" type="submit">search</button>
+            <div class="col-xs-10 col-xs-offset-1 query-wrapper">
+                <span aria-hidden="true" class="glyphicon glyphicon-search"></span>
+                <input class="searchbar" id="mainSearch" placeholder="Search phrases, shows, topics, networks, or people" type="text" ng-model="input" value="">
+                <button class="btn searchbtn" ng-click="query(input)" type="submit">search</button>
             </div>
         </div>
     </form>
 </div>
+
+
 
 
 
@@ -44,10 +44,9 @@
         integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
         crossorigin="anonymous"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-routes.js"></script>
-<script src="/public/app.js"></script>
-<script src="../audiosearch-client-node-master/index.js"></script>
-
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-route.js"></script>
+<script src="app.js"></script>
+<!--<script src="../audiosearch-client-node-master/index.js"></script>-->
 
 </body>
 </html>

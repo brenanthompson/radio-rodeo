@@ -4,9 +4,9 @@ var path = require("path");
 var morgan = require("morgan");
 var mongoose = require("mongoose");
 var bodyParser = require("body-parser");
-var port = process.env.PORT || 5000;
+var port = process.env.PORT || 5050;
 var config = require('./config');
-var Audiosearch = require("./audiosearch-client-node-master/index");
+var searchRoutes = require("./routes/searchRoutes");
 
 app.use(morgan("dev"));
 app.use(bodyParser.json());
@@ -18,13 +18,8 @@ app.use(express.static(path.join(__dirname, "public")));
 //     console.log("Successfully connected to the database");
 // });
 
-app.get("/", function(req, res){
-   var audiosearch = new Audiosearch(config.audiosearchAppId, config.audiosearchSecret);
-   audiosearch.searchEpisodes(req.query).then(function (results) {
-       res.send(results)
-   });
-});
+app.use("/api/search", searchRoutes);
 
 app.listen(port, function () {
-    console.log("Server listening on port" + port);
+    console.log("Server listening on port " + port);
 });
